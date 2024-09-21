@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:googleapis_auth/auth_io.dart';
 import 'package:shelf/shelf.dart';
@@ -57,7 +58,10 @@ Future<Response> pushHandler(
             'body': config.notificationBody,
           },
         'android': {...config.androidNotificationOptions},
-        'apns': {...config.apnsNotificationOptions},
+        'apns': {
+          ...config.apnsNotificationOptions,
+          'payload': {...config.apsPayload}
+        },
       },
     };
 
@@ -73,7 +77,7 @@ Future<Response> pushHandler(
       uri,
       body: jsonBody,
     );
-    if (config.debugLogs) print('<--- Response from FCM:\n${response.body}');
+    if (config.debugLogs) log('c\n${response.body}');
 
     if (response.statusCode != 200) rejected.add(device.pushkey);
   }

@@ -17,6 +17,7 @@ class Config {
 
   final Map<String, Object?> androidNotificationOptions;
   final Map<String, Object?> apnsNotificationOptions;
+  final Map<String, Object?> apsPayload;
 
   final bool debugLogs;
 
@@ -31,6 +32,7 @@ class Config {
     required this.notificationBody,
     required this.androidNotificationOptions,
     required this.apnsNotificationOptions,
+    required this.apsPayload,
     required this.debugLogs,
   });
 
@@ -50,6 +52,7 @@ class Config {
           Map<String, Object?>.from(yaml['androidNotificationOptions']),
       apnsNotificationOptions:
           Map<String, Object?>.from(yaml['apnsNotificationOptions']),
+      apsPayload: Map<String, Object?>.from(yaml['apsPayload']),
       debugLogs: yaml['debugLogs'] ?? false,
     );
   }
