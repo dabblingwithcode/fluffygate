@@ -31,6 +31,7 @@ androidNotificationOptions:
 apnsNotificationOptions:
   headers:
     apns-priority: "10"
+apsPayload:
   aps:
     sound: "default"
     badge: "{count}"
